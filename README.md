@@ -83,27 +83,35 @@ vercel domains add portfolio.jacobmaynard.co
 
 ## DNS (Namecheap)
 
-After Vercel assigns the domain, add these records in Namecheap → Domain List → Manage → Advanced DNS.
+Domain is already attached in Vercel to project `jacob-maynard-portfolio`.
 
-### Recommended (CNAME)
+In Namecheap → Domain List → **jacobmaynard.co** → Manage → **Advanced DNS**, add:
 
-| Type | Host | Value | TTL |
-|---|---|---|---|
-| CNAME Record | `portfolio` | `cname.vercel-dns.com` | Automatic |
-
-If Vercel shows a project-specific CNAME target, use that exact value instead of `cname.vercel-dns.com`.
-
-### Alternative (A record)
-
-Only if Vercel instructs you to use an A record for the subdomain:
+### Recommended (project CNAME)
 
 | Type | Host | Value | TTL |
 |---|---|---|---|
-| A Record | `portfolio` | `76.76.21.21` | Automatic |
+| **CNAME Record** | `portfolio` | `6eab7719ec5ef5cf.vercel-dns-017.com.` | Automatic |
 
-Remove conflicting `URL Redirect` or old `A`/`CNAME` records for `portfolio`.
+### Fallback options (if Namecheap rejects the project CNAME)
 
-Propagation usually completes within minutes; allow up to 24–48 hours in rare cases.
+| Type | Host | Value | TTL |
+|---|---|---|---|
+| CNAME Record | `portfolio` | `cname.vercel-dns.com.` | Automatic |
+| **or** A Record | `portfolio` | `76.76.21.21` | Automatic |
+
+Notes:
+
+- Delete any conflicting `URL Redirect`, `A`, or `CNAME` records for host `portfolio`.
+- Keep existing apex/www records for `jacobmaynard.co` unless you intentionally migrate nameservers.
+- After saving, verify with: `vercel domains verify portfolio.jacobmaynard.co`
+- Propagation is usually minutes; allow up to 24–48 hours in rare cases.
+
+### Live URLs
+
+- Production alias: https://jacob-maynard-portfolio.vercel.app
+- Custom domain (after DNS): https://portfolio.jacobmaynard.co
+- GitHub: https://github.com/pulseforgeatmns-ops/jacob-maynard-portfolio
 
 ## Accessibility & QA checklist
 
