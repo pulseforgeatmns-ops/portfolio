@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #18365b;
+  --navy-deep: #122844;
+  --navy-soft: #24456e;
+  --gold: #b78a2d;
+  --gold-soft: #c9a24a;
+  --bg: #fafaf8;
+  --bg-warm: #f3f1eb;
+  --ink: #222222;
+  --ink-muted: #5c6570;
+  --ink-faint: #8a9199;
+  --white: #ffffff;
+  --black: #0a0a0a;
+  --sidebar-width: 17.5rem;
+  --focus: #b78a2d;
+}
+
+@theme inline {
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-navy-soft: var(--navy-soft);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-bg: var(--bg);
+  --color-bg-warm: var(--bg-warm);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --font-display: var(--font-playfair);
+  --font-sans: var(--font-inter);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--gold) 35%, white);
+  color: var(--navy);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.font-display {
+  font-family: var(--font-playfair), ui-serif, Georgia, serif;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+
+.section-label .num {
+  color: var(--gold);
+  letter-spacing: 0.18em;
+}
+
+.section-label .rule {
+  display: inline-block;
+  width: 2.5rem;
+  height: 1px;
+  background: var(--gold);
+}
+
+.gold-rule {
+  width: 3rem;
+  height: 1px;
+  background: var(--gold);
+}
+
+.card-shadow {
+  box-shadow: 0 8px 30px rgba(24, 54, 91, 0.06);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 100;
+  background: var(--navy);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.main-shell {
+  margin-left: 0;
+}
+
+@media (min-width: 1024px) {
+  .main-shell {
+    margin-left: var(--sidebar-width);
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .main-shell {
+    margin-left: 0 !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+    min-height: auto !important;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75em;
+    color: #555;
+  }
+
+  a[href^="#"]::after,
+  a[href^="/"]::after {
+    content: none;
+  }
+}
