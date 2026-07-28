@@ -16,16 +16,15 @@ export const site = {
 };
 
 export const navItems = [
-  { id: "hero", number: "01", label: "Cover" },
-  { id: "executive-summary", number: "02", label: "Executive Summary" },
-  { id: "pulseforge", number: "03", label: "Pulseforge" },
-  { id: "architecture", number: "04", label: "Architecture" },
-  { id: "design-principles", number: "05", label: "Design Principles" },
-  { id: "anchor-cleaning", number: "06", label: "Anchor Cleaning" },
-  { id: "technical-leadership", number: "07", label: "Technical Leadership" },
-  { id: "architecture-decisions", number: "08", label: "Arch. Decisions" },
-  { id: "engineering-philosophy", number: "09", label: "Engineering Philosophy" },
-  { id: "contact", number: "10", label: "Closing" },
+  { id: "executive-summary", number: "01", label: "Executive Summary" },
+  { id: "pulseforge", number: "02", label: "Pulseforge" },
+  { id: "architecture", number: "03", label: "Platform Architecture" },
+  { id: "design-principles", number: "04", label: "Design Principles" },
+  { id: "anchor-cleaning", number: "05", label: "Anchor Cleaning" },
+  { id: "technical-leadership", number: "06", label: "Technical Leadership" },
+  { id: "architecture-decisions", number: "07", label: "Architecture Decisions" },
+  { id: "engineering-philosophy", number: "08", label: "Engineering Philosophy" },
+  { id: "contact", number: "09", label: "Contact" },
 ] as const;
 
 export type SectionId = (typeof navItems)[number]["id"];
@@ -35,25 +34,21 @@ export const kpis = [
     value: "10+",
     label: "Years Operations Leadership",
     detail: "Service operations translated into systems architecture.",
-    tone: "navy" as const,
   },
   {
     value: "1",
     label: "Modular AI Platform",
     detail: "Pulseforge — designed from operational first principles.",
-    tone: "light" as const,
   },
   {
     value: "8+",
     label: "Integrated Capabilities",
     detail: "Intelligence, CRM, workflows, knowledge, and governance.",
-    tone: "light" as const,
   },
   {
     value: "Live",
     label: "Production-Validated Workflows",
     detail: "Validated against real operational demands at Anchor Cleaning.",
-    tone: "cream" as const,
   },
 ];
 
@@ -104,33 +99,27 @@ export const architectureLayers = [
   {
     title: "Operator",
     detail: "User · Administrator · Service Manager",
-    tone: "navy" as const,
   },
   {
     title: "Conversational Interface",
     detail: "Web App · Dashboard · API Surface",
-    tone: "light" as const,
   },
   {
     title: "Workflow Orchestrator",
     detail: "Deterministic state · Auditable transitions",
-    tone: "light" as const,
   },
   {
     title: "Capability Services",
     detail:
       "Prospect Intelligence · CRM · Knowledge · Reporting · Communications",
-    tone: "light" as const,
   },
   {
     title: "Human Approval Layer",
     detail: "Governed automation at every exit point",
-    tone: "navy" as const,
   },
   {
     title: "External Systems",
     detail: "Email · CRM · Calendar · Enrichment · Messaging",
-    tone: "light" as const,
   },
 ];
 
@@ -157,42 +146,42 @@ export const designPrinciples = [
   {
     number: "01",
     title: "Modular Architecture",
-    subtitle: "Composable by design.",
+    subtitle: "Composable by design",
     description:
       "Each service is independently deployable with explicit contracts and clear boundaries.",
   },
   {
     number: "02",
     title: "Deterministic Workflows",
-    subtitle: "Predictable, always.",
+    subtitle: "Predictable, always",
     description:
       "Critical paths produce auditable outputs that operators can trust and replay.",
   },
   {
     number: "03",
     title: "Evidence-Based Decisions",
-    subtitle: "Signal over intuition.",
+    subtitle: "Signal over intuition",
     description:
       "Recommendations are grounded in inspectable operational evidence before action.",
   },
   {
     number: "04",
     title: "Human Governance",
-    subtitle: "Approval before execution.",
+    subtitle: "Approval before execution",
     description:
       "High-stakes automation stops at a human boundary by design, not by exception.",
   },
   {
     number: "05",
     title: "Observability",
-    subtitle: "Full visibility at every layer.",
+    subtitle: "Visibility at every layer",
     description:
       "State, decisions, and outcomes remain visible so systems stay operable under load.",
   },
   {
     number: "06",
     title: "Scalability",
-    subtitle: "Expand without rewrite.",
+    subtitle: "Expand without rewrite",
     description:
       "New capabilities plug into shared orchestration without collapsing architecture.",
   },
@@ -235,7 +224,8 @@ export const leadershipTimeline = [
   },
   {
     title: "Founder",
-    detail: "Built Pulseforge and Anchor Cleaning as architecture and validation environments.",
+    detail:
+      "Built Pulseforge and Anchor Cleaning as architecture and validation environments.",
   },
   {
     title: "Platform Architecture",
@@ -243,7 +233,8 @@ export const leadershipTimeline = [
   },
   {
     title: "Product Development",
-    detail: "Led requirements, specifications, implementation reviews, and roadmap sequencing.",
+    detail:
+      "Led requirements, specifications, implementation reviews, and roadmap sequencing.",
   },
   {
     title: "Deployment",
@@ -251,7 +242,8 @@ export const leadershipTimeline = [
   },
   {
     title: "Continuous Improvement",
-    detail: "Tightened observability, governance, and reliability from live feedback.",
+    detail:
+      "Tightened observability, governance, and reliability from live feedback.",
   },
 ];
 
@@ -341,4 +333,11 @@ export const philosophyThemes = [
   "Long-term maintainability",
   "Systems thinking",
   "Reliability before autonomy",
+];
+
+export const executiveHighlights = [
+  "Translates operational complexity into modular software architecture",
+  "Designs deterministic workflows with human-governed automation",
+  "Validates platform decisions in live production environments",
+  "Prioritizes business outcomes over AI novelty",
 ];

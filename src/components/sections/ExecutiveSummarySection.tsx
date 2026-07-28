@@ -1,43 +1,38 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { kpis } from "@/lib/content";
+import { executiveHighlights, kpis } from "@/lib/content";
 import {
+  BriefSection,
   GoldRule,
-  SectionLabel,
-  SectionShell,
+  SectionKicker,
 } from "@/components/SectionPrimitives";
 
 export function ExecutiveSummarySection() {
   return (
-    <SectionShell
-      id="executive-summary"
-      className="px-6 py-20 sm:px-10 lg:px-16 lg:py-28"
-    >
-      <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(18rem,0.8fr)] lg:gap-16">
-        <div>
-          <SectionLabel number="02" label="Executive Summary" />
+    <BriefSection id="executive-summary" bordered={false}>
+      <SectionKicker number="01" label="Executive Summary" />
+
+      <div className="brief-grid items-start">
+        <div className="col-span-12 lg:col-span-7">
           <h2
             id="executive-summary-heading"
-            className="max-w-xl font-display text-4xl leading-[1.08] text-navy sm:text-5xl"
+            className="display-title text-[clamp(2rem,4vw,3.25rem)]"
           >
             Founder. Operator.
             <br />
             AI Systems Architect.
           </h2>
-          <GoldRule className="mt-7 mb-8" />
-          <div className="max-w-2xl space-y-5 text-[1.02rem] leading-relaxed text-ink-muted">
+          <GoldRule className="mt-8 mb-8" />
+          <div className="space-y-5 lead">
             <p>
               Jacob Maynard is a founder and AI systems architect with 10+ years
-              of operations leadership. He translates operational complexity
-              into software architecture — designing modular, deterministic
-              systems that reduce manual overhead and preserve human control
-              over high-stakes decisions.
+              of operations leadership. He translates operational complexity into
+              software architecture — designing modular, deterministic systems
+              that reduce manual overhead and preserve human control over
+              high-stakes decisions.
             </p>
             <p>
-              Pulseforge is the expression of that work: an AI-native platform
-              for workflow orchestration, operational intelligence, CRM
-              automation, knowledge management, communications, reporting, and
+              Pulseforge is the expression of that work: a modular platform for
+              workflow orchestration, operational intelligence, CRM automation,
+              knowledge management, communications, reporting, and
               human-governed decision support.
             </p>
             <p>
@@ -46,49 +41,42 @@ export function ExecutiveSummarySection() {
               workflows, no controlled environment.
             </p>
           </div>
-          <p className="mt-10 text-xs uppercase tracking-[0.22em] text-ink-faint">
-            Key Achievements
-          </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-          {kpis.map((kpi, index) => {
-            const tones = {
-              navy: "bg-navy text-white",
-              light: "bg-white text-navy card-shadow border border-navy/5",
-              cream: "bg-bg-warm text-navy border border-navy/5",
-            };
-            return (
-              <motion.article
-                key={kpi.label}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.45, delay: index * 0.06 }}
-                className={`rounded-2xl p-5 ${tones[kpi.tone]}`}
-              >
-                <p
-                  className={`font-display text-4xl ${
-                    kpi.tone === "navy" ? "text-gold" : "text-navy"
-                  }`}
+        <aside className="col-span-12 lg:col-span-5">
+          <div className="panel-soft p-6 sm:p-7">
+            <p className="eyebrow">Briefing Points</p>
+            <ul className="mt-5 space-y-4">
+              {executiveHighlights.map((point) => (
+                <li
+                  key={point}
+                  className="flex gap-3 border-t border-[var(--line)] pt-4 text-sm leading-relaxed text-ink first:border-t-0 first:pt-0"
                 >
-                  {kpi.value}
-                </p>
-                <h3 className="mt-2 text-sm font-semibold tracking-wide">
-                  {kpi.label}
-                </h3>
-                <p
-                  className={`mt-2 text-sm leading-relaxed ${
-                    kpi.tone === "navy" ? "text-white/70" : "text-ink-muted"
-                  }`}
-                >
-                  {kpi.detail}
-                </p>
-              </motion.article>
-            );
-          })}
-        </div>
+                  <span
+                    className="mt-2 h-px w-3 shrink-0 bg-gold"
+                    aria-hidden="true"
+                  />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
       </div>
-    </SectionShell>
+
+      <div className="mt-14 grid gap-px overflow-hidden border border-[var(--line)] bg-[var(--line)] sm:grid-cols-2 xl:grid-cols-4">
+        {kpis.map((kpi) => (
+          <article key={kpi.label} className="bg-bg-elevated p-6 sm:p-7">
+            <p className="font-display text-3xl text-navy sm:text-4xl">
+              {kpi.value}
+            </p>
+            <h3 className="mt-3 text-sm font-medium text-ink">{kpi.label}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted">
+              {kpi.detail}
+            </p>
+          </article>
+        ))}
+      </div>
+    </BriefSection>
   );
 }

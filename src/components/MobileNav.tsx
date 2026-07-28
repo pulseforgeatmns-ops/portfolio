@@ -22,24 +22,19 @@ export function MobileNav({ activeId }: { activeId: SectionId }) {
   }, []);
 
   return (
-    <header className="no-print sticky top-0 z-50 border-b border-navy/10 bg-bg/95 backdrop-blur lg:hidden">
-      <div className="flex items-center justify-between px-4 py-3">
-        <a href="#hero" className="flex items-center gap-2.5">
-          <span className="flex h-8 w-8 items-center justify-center bg-gold font-display text-xs font-semibold text-navy">
-            JM
+    <header className="no-print sticky top-0 z-50 border-b border-[var(--line)] bg-[color-mix(in_srgb,var(--bg)_92%,white)] backdrop-blur-md lg:hidden">
+      <div className="flex items-center justify-between px-4 py-3.5">
+        <a href="#hero" className="min-w-0">
+          <span className="block font-display text-base text-navy">
+            {site.name}
           </span>
-          <span>
-            <span className="block text-sm font-medium text-navy">
-              {site.name}
-            </span>
-            <span className="block text-[0.65rem] tracking-wide text-ink-muted">
-              AI Systems Architect
-            </span>
+          <span className="block truncate text-[0.65rem] tracking-[0.06em] text-muted">
+            AI Systems Architect
           </span>
         </a>
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-navy/15 text-navy"
+          className="inline-flex h-10 w-10 items-center justify-center border border-[var(--line)] text-navy"
           aria-expanded={open}
           aria-controls="mobile-drawer"
           onClick={() => setOpen((value) => !value)}
@@ -47,13 +42,13 @@ export function MobileNav({ activeId }: { activeId: SectionId }) {
           <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
           <span aria-hidden="true" className="flex flex-col gap-1.5">
             <span
-              className={`block h-0.5 w-5 bg-current transition ${open ? "translate-y-2 rotate-45" : ""}`}
+              className={`block h-px w-4 bg-current transition ${open ? "translate-y-[7px] rotate-45" : ""}`}
             />
             <span
-              className={`block h-0.5 w-5 bg-current transition ${open ? "opacity-0" : ""}`}
+              className={`block h-px w-4 bg-current transition ${open ? "opacity-0" : ""}`}
             />
             <span
-              className={`block h-0.5 w-5 bg-current transition ${open ? "-translate-y-2 -rotate-45" : ""}`}
+              className={`block h-px w-4 bg-current transition ${open ? "-translate-y-[7px] -rotate-45" : ""}`}
             />
           </span>
         </button>
@@ -62,10 +57,10 @@ export function MobileNav({ activeId }: { activeId: SectionId }) {
       {open ? (
         <div
           id="mobile-drawer"
-          className="absolute inset-x-0 top-full max-h-[80vh] overflow-y-auto border-b border-navy/10 bg-navy text-white shadow-xl"
+          className="absolute inset-x-0 top-full max-h-[75vh] overflow-y-auto border-b border-[var(--line)] bg-bg"
         >
-          <nav aria-label="Mobile sections" className="px-3 py-4">
-            <ul className="space-y-1">
+          <nav aria-label="Mobile sections" className="px-2 py-3">
+            <ul>
               {navItems.map((item) => {
                 const active = activeId === item.id;
                 return (
@@ -73,12 +68,14 @@ export function MobileNav({ activeId }: { activeId: SectionId }) {
                     <a
                       href={`#${item.id}`}
                       aria-current={active ? "true" : undefined}
-                      className={`flex items-center gap-3 rounded-md px-3 py-3 text-sm ${
-                        active ? "bg-white/10 text-white" : "text-white/70"
+                      className={`flex items-baseline gap-3 px-3 py-3 text-sm ${
+                        active ? "text-navy" : "text-muted"
                       }`}
                       onClick={() => setOpen(false)}
                     >
-                      <span className="w-6 text-xs text-gold">{item.number}</span>
+                      <span className="w-5 text-[0.65rem] text-gold">
+                        {item.number}
+                      </span>
                       {item.label}
                     </a>
                   </li>

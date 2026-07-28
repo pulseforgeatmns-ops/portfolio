@@ -14,35 +14,22 @@ export default function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: 72,
-          background: "#0A0A0A",
-          color: "#FAFAF8",
-          position: "relative",
+          padding: 80,
+          background: "#FAFAF8",
+          color: "#18365B",
         }}
       >
         <div
           style={{
-            position: "absolute",
-            right: -80,
-            top: "50%",
-            transform: "translateY(-50%)",
-            width: 420,
-            height: 420,
-            borderRadius: 9999,
-            background: "#B78A2D",
-          }}
-        />
-        <div
-          style={{
             display: "flex",
-            fontSize: 22,
-            letterSpacing: 8,
+            fontSize: 18,
+            letterSpacing: 6,
             textTransform: "uppercase",
-            color: "#B78A2D",
-            marginBottom: 28,
+            color: "#667085",
+            marginBottom: 36,
           }}
         >
-          Executive Portfolio
+          Executive Architecture Brief
         </div>
         <div
           style={{
@@ -50,7 +37,7 @@ export default function OpenGraphImage() {
             fontSize: 72,
             lineHeight: 1.05,
             fontFamily: "Georgia, serif",
-            maxWidth: 760,
+            maxWidth: 900,
           }}
         >
           Jacob Maynard
@@ -58,9 +45,11 @@ export default function OpenGraphImage() {
         <div
           style={{
             display: "flex",
-            marginTop: 18,
-            fontSize: 28,
-            color: "rgba(250,250,248,0.75)",
+            marginTop: 20,
+            fontSize: 24,
+            letterSpacing: 4,
+            textTransform: "uppercase",
+            color: "#667085",
           }}
         >
           Founder · AI Systems Architect
@@ -68,12 +57,21 @@ export default function OpenGraphImage() {
         <div
           style={{
             display: "flex",
-            marginTop: 28,
+            width: 44,
+            height: 1,
+            background: "#B78A2D",
+            marginTop: 36,
+            marginBottom: 28,
+          }}
+        />
+        <div
+          style={{
+            display: "flex",
             fontSize: 28,
             fontStyle: "italic",
             fontFamily: "Georgia, serif",
-            color: "#B78A2D",
-            maxWidth: 700,
+            color: "#18365B",
+            maxWidth: 760,
           }}
         >
           Designing software that reduces operational burden.

@@ -1,85 +1,63 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { architectureDecisions } from "@/lib/content";
 import {
+  BriefSection,
   GoldRule,
-  SectionLabel,
-  SectionShell,
+  SectionKicker,
 } from "@/components/SectionPrimitives";
 
 export function ArchitectureDecisionsSection() {
   return (
-    <SectionShell
-      id="architecture-decisions"
-      className="px-6 py-20 sm:px-10 lg:px-16 lg:py-28"
-    >
-      <div className="mx-auto max-w-6xl">
-        <SectionLabel number="08" label="Architecture Decisions" />
-        <h2
-          id="architecture-decisions-heading"
-          className="max-w-2xl font-display text-4xl leading-[1.1] text-navy sm:text-5xl"
-        >
-          Six decisions that define the Pulseforge architecture.
-        </h2>
-        <GoldRule className="mt-7 mb-8" />
-        <p className="max-w-2xl text-[1.02rem] leading-relaxed text-ink-muted">
-          Each decision below was made deliberately, tested against real
-          operational requirements, and validated in production. These are not
-          defaults — they are commitments.
-        </p>
+    <BriefSection id="architecture-decisions">
+      <SectionKicker number="07" label="Architecture Decisions" />
 
-        <div className="mt-12 grid gap-4">
-          {architectureDecisions.map((decision, index) => (
-            <motion.article
-              key={decision.title}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.4, delay: index * 0.04 }}
-              className="grid gap-6 rounded-2xl bg-navy p-6 text-white md:grid-cols-[minmax(12rem,0.9fr)_minmax(0,1fr)_minmax(0,1fr)] md:gap-8 md:p-7"
-            >
-              <div>
-                <span
-                  className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-gold/20 text-gold"
-                  aria-hidden="true"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-5 w-5"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                  >
-                    <path d="M12 12a3 3 0 100-6 3 3 0 000 6zM5 19a7 7 0 0114 0" />
-                  </svg>
-                </span>
-                <h3 className="font-display text-2xl leading-tight">
+      <div className="brief-grid">
+        <div className="col-span-12 lg:col-span-8">
+          <h2
+            id="architecture-decisions-heading"
+            className="display-title text-[clamp(2rem,4vw,3.25rem)]"
+          >
+            Six decisions that define the Pulseforge architecture.
+          </h2>
+          <GoldRule className="mt-8 mb-8" />
+          <p className="lead">
+            Each decision below was made deliberately, tested against real
+            operational requirements, and validated in production. These are not
+            defaults — they are commitments.
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-12 space-y-4">
+        {architectureDecisions.map((decision, index) => (
+          <article
+            key={decision.title}
+            className="border border-[var(--line)] bg-bg-elevated"
+          >
+            <div className="grid gap-0 lg:grid-cols-12">
+              <div className="border-b border-[var(--line)] p-5 sm:p-6 lg:col-span-4 lg:border-b-0 lg:border-r">
+                <p className="text-[0.65rem] tabular-nums tracking-[0.16em] text-gold">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-3 font-display text-2xl text-navy">
                   {decision.title}
                 </h3>
               </div>
-              <div>
-                <p className="text-[0.65rem] uppercase tracking-[0.18em] text-white/45">
-                  Rationale
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-white/80">
+              <div className="border-b border-[var(--line)] p-5 sm:p-6 lg:col-span-4 lg:border-b-0 lg:border-r">
+                <p className="eyebrow">Rationale</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted">
                   {decision.rationale}
                 </p>
               </div>
-              <div>
-                <p className="text-[0.65rem] uppercase tracking-[0.18em] text-white/45">
-                  Impact
+              <div className="bg-bg-soft p-5 sm:p-6 lg:col-span-4">
+                <p className="eyebrow">Business Impact</p>
+                <p className="mt-3 font-display text-base italic leading-relaxed text-navy">
+                  {decision.impact}
                 </p>
-                <div className="mt-3 rounded-xl bg-black/20 p-4">
-                  <p className="font-display text-sm italic leading-relaxed text-white/90">
-                    “{decision.impact}”
-                  </p>
-                </div>
               </div>
-            </motion.article>
-          ))}
-        </div>
+            </div>
+          </article>
+        ))}
       </div>
-    </SectionShell>
+    </BriefSection>
   );
 }

@@ -1,97 +1,85 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { capabilities } from "@/lib/content";
 import {
+  BriefSection,
   GoldRule,
-  SectionLabel,
-  SectionShell,
+  SectionKicker,
 } from "@/components/SectionPrimitives";
+
+const philosophy = [
+  {
+    title: "Modular",
+    detail: "Each service is independently deployable",
+  },
+  {
+    title: "Deterministic",
+    detail: "Predictable, auditable outputs",
+  },
+  {
+    title: "Observable",
+    detail: "Full visibility at every layer",
+  },
+  {
+    title: "Governed",
+    detail: "Humans approve before execution",
+  },
+];
 
 export function PulseforgeSection() {
   return (
-    <SectionShell id="pulseforge" className="px-6 py-20 sm:px-10 lg:px-16 lg:py-28">
-      <div className="mx-auto max-w-6xl">
-        <SectionLabel number="03" label="Platform" />
-        <div className="mb-6 flex items-center gap-3">
-          <span className="flex h-8 w-8 items-center justify-center bg-gold font-display text-sm font-bold text-navy">
-            P
-          </span>
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-navy">
-            Pulseforge
+    <BriefSection id="pulseforge">
+      <SectionKicker number="02" label="Pulseforge" />
+
+      <div className="brief-grid">
+        <div className="col-span-12 lg:col-span-8">
+          <p className="eyebrow mb-4">Platform</p>
+          <h2
+            id="pulseforge-heading"
+            className="display-title max-w-3xl text-[clamp(2rem,4vw,3.25rem)]"
+          >
+            A modular AI platform designed from operational first principles.
+          </h2>
+          <GoldRule className="mt-8 mb-8" />
+          <p className="lead">
+            Pulseforge is the platform Jacob designed to prove the architecture
+            works. Eight integrated capability layers share context, pass state,
+            and surface only what humans need to act on — keeping automation
+            deterministic and governance intact at every boundary.
           </p>
         </div>
+      </div>
 
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start">
-          <div>
-            <h2
-              id="pulseforge-heading"
-              className="max-w-2xl font-display text-4xl leading-[1.1] text-navy sm:text-5xl"
-            >
-              A modular AI platform designed from operational first principles.
-            </h2>
-            <GoldRule className="mt-7 mb-8" />
-            <p className="max-w-2xl text-[1.02rem] leading-relaxed text-ink-muted">
-              Pulseforge is the platform Jacob designed to prove the
-              architecture works. Eight integrated capability layers share
-              context, pass state, and surface only what humans need to act on —
-              keeping automation deterministic and governance intact at every
-              boundary.
+      <div className="mt-12 grid gap-px overflow-hidden border border-[var(--line)] bg-[var(--line)] sm:grid-cols-2 lg:grid-cols-4">
+        {philosophy.map((item) => (
+          <div key={item.title} className="bg-bg-elevated p-5 sm:p-6">
+            <p className="font-display text-lg text-navy">{item.title}</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted">
+              {item.detail}
             </p>
           </div>
+        ))}
+      </div>
 
-          <aside className="rounded-2xl bg-navy p-6 text-white">
-            <p className="text-[0.68rem] uppercase tracking-[0.2em] text-gold">
-              Platform Design Philosophy
-            </p>
-            <ul className="mt-5 space-y-4 text-sm leading-relaxed text-white/75">
-              <li>
-                <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-gold align-middle" />
-                <strong className="font-medium text-white">Modular —</strong>{" "}
-                each service is independently deployable
-              </li>
-              <li>
-                <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-gold align-middle" />
-                <strong className="font-medium text-white">Deterministic —</strong>{" "}
-                predictable, auditable outputs
-              </li>
-              <li>
-                <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-gold align-middle" />
-                <strong className="font-medium text-white">Observable —</strong>{" "}
-                full visibility at every layer
-              </li>
-              <li>
-                <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-gold align-middle" />
-                <strong className="font-medium text-white">Governed —</strong>{" "}
-                humans approve before execution
-              </li>
-            </ul>
-          </aside>
-        </div>
-
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="mt-12">
+        <p className="eyebrow mb-5">Capability Map</p>
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {capabilities.map((capability, index) => (
-            <motion.article
+            <article
               key={capability.title}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.35 }}
-              transition={{ duration: 0.4, delay: index * 0.04 }}
-              className="rounded-2xl border border-navy/8 bg-white p-5 card-shadow"
+              className="border border-[var(--line)] bg-bg-elevated p-5"
             >
-              <p className="text-[0.65rem] uppercase tracking-[0.18em] text-gold">
-                Capability
+              <p className="text-[0.65rem] tabular-nums tracking-[0.16em] text-gold">
+                {String(index + 1).padStart(2, "0")}
               </p>
               <h3 className="mt-3 font-display text-xl text-navy">
                 {capability.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+              <p className="mt-3 text-sm leading-relaxed text-muted">
                 {capability.description}
               </p>
-            </motion.article>
+            </article>
           ))}
         </div>
       </div>
-    </SectionShell>
+    </BriefSection>
   );
 }
